@@ -17,13 +17,41 @@
 	text-align: right;
 	font-size: 30px;
 
+
+}
+
+.custom-table-value {
+	margin-top: 40px;
+	margin-left:0px;
+
+}
+
+
+
+.custom-value {
+	margin-bottom: -2px;
+	font-family: "courier new", "Lucida Console", Monospace;
+	color: white;
+	padding-top: 15px;
+
+	border: 1px solid white;
+	border-collapse: collapse;
+	background-color: #162B40;
 }
 
 
 .img-custom {
 }
 
+.custom-body {
+	background: url("../img/3d-background.png") no-repeat center center;
+	
+	background-size: cover; 
+}
 
+.custom-table {
+	border: 1px solid white;
+}
 
 
 
