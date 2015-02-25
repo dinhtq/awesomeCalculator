@@ -53,6 +53,76 @@
 	border: 1px solid white;
 }
 
+#usernamebox {
+	text-align: center;
+	margin-top: 20px;
+	font-family: "courier new", "Lucida Console", Monospace;
+	color: white;
+	
+}
+
+.custom-intro {
+	margin-top: 20px;
+	font-family: "courier new", "Lucida Console", Monospace;
+	color: white;
+}
+
+
+
+.custom-name {
+	text-align: right;
+}
+
+.custom-name-btn {
+	margin-left: 5%;
+}
+
+.custom-hiUser {
+	font-size: 20px;
+}
+
+#history {
+	margin-left: 30%;
+}
+
+#history p {
+
+	font-family: "courier new", "Lucida Console", Monospace;
+	color: white;
+}
+
+
+
+
+
+
+
+.custom-footer {
+	margin-left:40%;
+	font-family: "courier new", "Lucida Console", Monospace;
+	color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

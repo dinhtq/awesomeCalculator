@@ -1,4 +1,11 @@
 
+//name input
+	$(':text:first').focus();
+
+	$('#hiUserbox').hide();
+	$('#noUser').hide();
+
+
 /*
 operation key code
 	add button = 1
@@ -14,10 +21,67 @@ var second_string = " ";
 var empty_string = " ";
 var second_append = false;
 
+
+
 //set variables for first and second number
 var first ;
 var second ;
 var result ;
+
+//for plus/minus sign
+//true is plus
+//false is minus
+
+
+
+//checking users... 
+// if there is a username key-value, then just prompt "Hi, user" or else enter name for localstorage div shows up
+
+if (localStorage.getItem("username")) {
+
+	var gotuser = localStorage.getItem("username");
+	$('#hiUserbox').slideDown("slow");	
+	$("#hiUser").slideDown("slow");
+
+	$('#hiUser').html("Hi, " + gotuser);
+
+} else {
+
+	$('#noUser').slideDown("slow");
+
+
+}
+
+$('#notyou').click(function(){
+
+	$('#hiUserbox').hide();
+	$('#noUser').slideDown("slow");
+
+
+});
+
+
+
+
+$('#submitName').click(function(){
+
+	var userstr = $('#username').val();
+
+	localStorage.setItem("username",userstr);
+
+	var gotuser = localStorage.getItem("username");
+
+	$('#hiUserbox').slideDown("slow");
+
+	$('#hiUser').slideDown("slow").html("Hi, " + gotuser);
+
+	$('#noUser').hide();
+
+}); 
+
+
+
+
 
 
 function btnzero_clicked() {
@@ -55,6 +119,9 @@ function btnzero_clicked() {
 
 
 
+// keep count for local storage
+var count = 0;
+
 function btnequal_clicked() {
 
 	switch(operation) 
@@ -62,21 +129,41 @@ function btnequal_clicked() {
 		case 1:  
 			result = first + second;
 			document.getElementById('value').innerHTML = result;
+
+			//for history storage
+			var resultstr = $('#value').html();
+			$('#history').append("<p>" + first + " + " + second + " = " + resultstr + "</p>");
+
+			first = result;
+
 			break;
 
 		case 2:
 			result = first - second;
 			document.getElementById('value').innerHTML = result;
+
+			//for history storage
+			var resultstr = $('#value').html();
+			$('#history').append("<p>" + first + " - " + second + " = " + resultstr + "</p>");
+			first = result;
 			break;
 
 		case 3:
 			result = first * second;
 			document.getElementById('value').innerHTML = result;
+			//for history storage
+			var resultstr = $('#value').html();
+			$('#history').append("<p>" + first + " x " + second + " = " + resultstr + "</p>");
+			first = result;
 			break;
 
 		case 4:
 			result = first / second;
 			document.getElementById('value').innerHTML = result;
+			//for history storage
+			var resultstr = $('#value').html();
+			$('#history').append("<p>" + first + " / " + second + " = " + resultstr + "</p>");
+			first = result;
 			break;
 
 
@@ -88,10 +175,12 @@ function btnequal_clicked() {
 	}
 
 	if (operation != 0) {
-		first = second + first;
+
 		second = 0;
 		second_string = " ";
 	}
+
+
 
 	
 }
@@ -115,7 +204,7 @@ function btnone_clicked() {
 		} else {
 
 					if (second_append == false) {
-						document.getElementById('value').innerHTML = second_string;
+						document.getElementById('value').innerHTML = " ";
 						second_string = $('#value').append("1");
 						var output = $('#value').html();
 						second = Number(output);
@@ -152,7 +241,7 @@ function btntwo_clicked() {
 
 		else {
 					if (second_append == false) {
-						document.getElementById('value').innerHTML = second_string;
+						document.getElementById('value').innerHTML = " ";
 						second_string = $('#value').append("2");
 						var output = $('#value').html();
 						second = Number(output);
@@ -186,7 +275,7 @@ function btnthree_clicked() {
 			
 		} else {
 			if (second_append == false) {
-						document.getElementById('value').innerHTML = second_string;
+						document.getElementById('value').innerHTML = " ";
 						second_string = $('#value').append("3");
 						var output = $('#value').html();
 						second = Number(output);
@@ -218,7 +307,7 @@ function btnfour_clicked() {
 		} else {
 
 			if (second_append == false) {
-						document.getElementById('value').innerHTML = second_string;
+						document.getElementById('value').innerHTML = " ";
 						second_string = $('#value').append("4");
 						var output = $('#value').html();
 						second = Number(output);
@@ -250,7 +339,7 @@ function btnfive_clicked() {
 		} else {
 			
 			if (second_append == false) {
-						document.getElementById('value').innerHTML = second_string;
+						document.getElementById('value').innerHTML = " ";
 						second_string = $('#value').append("5");
 						var output = $('#value').html();
 						second = Number(output);
@@ -282,7 +371,7 @@ function btnsix_clicked() {
 		} else {
 			
 			if (second_append == false) {
-						document.getElementById('value').innerHTML = second_string;
+						document.getElementById('value').innerHTML = " ";
 						second_string = $('#value').append("6");
 						var output = $('#value').html();
 						second = Number(output);
@@ -314,7 +403,7 @@ function btnseven_clicked() {
 		} else {
 			
 			if (second_append == false) {
-						document.getElementById('value').innerHTML = second_string;
+						document.getElementById('value').innerHTML = " ";
 						second_string = $('#value').append("7");
 						var output = $('#value').html();
 						second = Number(output);
@@ -346,7 +435,7 @@ function btneight_clicked() {
 		} else {
 		
 			if (second_append == false) {
-						document.getElementById('value').innerHTML = second_string;
+						document.getElementById('value').innerHTML = " ";
 						second_string = $('#value').append("8");
 						var output = $('#value').html();
 						second = Number(output);
@@ -379,7 +468,7 @@ function btnnine_clicked() {
 			
 		} else {
 			if (second_append == false) {
-						document.getElementById('value').innerHTML = second_string;
+						document.getElementById('value').innerHTML = " ";
 						second_string = $('#value').append("9");
 						var output = $('#value').html();
 						second = Number(output);
@@ -410,36 +499,208 @@ function btnclear_clicked() {
 
 function btnadd_clicked() {
 
+	switch(operation) 
+	{
+		case 1: number = first + second;
+				$('#value').html(number);
+				
+
+
+
+				first = number;
+				break;
+		case 2: number = first - second;
+				$('#value').html(number);
+				historystr = ('#value').val();
+				first = number;
+				break;
+		case 3: number = first * second;
+				$('#value').html(number);
+				historystr = ('#value').val();
+				first = number;
+				break;
+		case 4: number = first / second;
+				$('#value').html(number);
+				historystr = ('#value').val();
+				first = number;
+				break;
+
+	}
+	 
 	
 	operation = 1;
 	second_append = false;
+
+
+
+	
 	
 
 }
 
 function btndivide_clicked() {
 
+	switch(operation) 
+	{
+		case 1: number = first + second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 2: number = first - second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 3: number = first * second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 4: number = first / second;
+				$('#value').html(number);
+				first = number;
+				break;
+
+	}
+
 	operation = 4;
 	second_append = false;
+
+	
 }
 
 function btnmult_clicked() {
 
+	switch(operation) 
+	{
+		case 1: number = first + second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 2: number = first - second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 3: number = first * second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 4: number = first / second;
+				$('#value').html(number);
+				first = number;
+				break;
+
+	}
+
 	operation = 3;
 	second_append = false;
+
+	
 }
 
-function btndel_clicked() {
 
-	document.getElementById('value').innerHTML = "DEL";
-}
 
 function btnminus_clicked() {
 
+	switch(operation) 
+	{
+		case 1: number = first + second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 2: number = first - second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 3: number = first * second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 4: number = first / second;
+				$('#value').html(number);
+				first = number;
+				break;
+
+	}
+
 	operation = 2;
 	second_append = false;
+
 }
 
+
+function btndel_clicked() {
+
+	var str = $('#value').html();
+
+	if (operation == 0) {
+		var temp = str.substr(0,str.length-1);
+		$('#value').html(temp);
+		first_string = temp;
+
+	} else {
+		var temp = str.substr(0,str.length-1);
+		$('#value').html(temp);
+		second_string = temp;
+	}
+
+
+	
+	
+}
+
+function btndecimal_clicked() {
+	if (operation == 0) 	
+		{ 
+			
+			first_string = $('#value').append(".");
+			var output = $('#value').html();
+			
+			first = Number(output);
+			
+		} else {
+			if (second_append == false) {
+						document.getElementById('value').innerHTML = " ";
+						second_string = $('#value').append(".");
+						var output = $('#value').html();
+						second = Number(output);
+						second_append = true;
+					
+					} else{
+						second_string = $('#value').append(".");
+						var output = $('#value').html();
+						second = Number(output);
+						
+					}
+			
+
+			
+			
+		}
+
+}
+
+function btnplusminus_clicked() {
+
+	var temp = $('#value').html();
+		var tempnumber = temp * (-1);
+		$('#value').html(tempnumber);
+
+	if (operation == 0) 	
+		{ 
+			
+			first = tempnumber;
+			
+		} else {
+			
+			second = tempnumber;
+		}
+	
+	
+		
+
+
+
+}
+	
 
 
 function btnparen_clicked() {
