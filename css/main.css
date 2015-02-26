@@ -11,6 +11,39 @@
 	margin-top: 5%;
 }
 
+.head_logo {
+	color: white; 
+	font-family: "courier new", "Lucida Console", Monospace;
+	font-size: 20px;
+	margin-left: 35%;
+
+	-webkit-animation: myfirst 5s; /*chrome safari opera*/
+	animation: myfirst 5s;
+
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+
+
+}
+
+/*chrome safari opera*/
+@-webkit-keyframes myfirst {
+	0% {color : #0066CC; }
+	25% {color: #BFD8F2;}
+	50% {color: #0066CC;}
+	75% {color: #BFD8F2;}
+	100% {color : #0066CC; }
+}
+
+/*chrome safari opera*/
+@keyframes myfirst {
+		0% {color : #0066CC; }
+	25% {color: #BFD8F2;}
+	50% {color: #0066CC;}
+	75% {color: #BFD8F2;}
+	100% {color : #0066CC; }
+}
+
 
 #value {
 	height: 70px;
@@ -18,6 +51,12 @@
 	font-size: 30px;
 
 
+}
+
+#blinkingCursor {
+	font-size: 30px;
+	padding: 0px;
+	margin: 0px;
 }
 
 .custom-table-value {
