@@ -6,6 +6,15 @@
 	$('#noUser').hide();
 
 
+	$('#usernamebox').animate({left : '10%'});
+
+	$('#custom-footer').animate({left : '30%'}, '50');
+
+
+
+
+
+
 /*
 operation key code
 	add button = 1
@@ -40,14 +49,14 @@ var result ;
 if (localStorage.getItem("username")) {
 
 	var gotuser = localStorage.getItem("username");
-	$('#hiUserbox').slideDown("slow");	
-	$("#hiUser").slideDown("slow");
+	$('#hiUserbox').fadeIn("slow");	
+	$("#hiUser").fadeIn("slow");
 
 	$('#hiUser').html("Hi, " + gotuser);
 
 } else {
 
-	$('#noUser').slideDown("slow");
+	$('#noUser').fadeIn("slow");
 
 
 }
@@ -55,7 +64,7 @@ if (localStorage.getItem("username")) {
 $('#notyou').click(function(){
 
 	$('#hiUserbox').hide();
-	$('#noUser').slideDown("slow");
+	$('#noUser').fadeIn("slow");
 
 
 });
@@ -71,17 +80,82 @@ $('#submitName').click(function(){
 
 	var gotuser = localStorage.getItem("username");
 
-	$('#hiUserbox').slideDown("slow");
+	$('#hiUserbox').fadeIn("slow");
 
-	$('#hiUser').slideDown("slow").html("Hi, " + gotuser);
+	$('#hiUser').fadeIn("slow").html("Hi, " + gotuser);
 
 	$('#noUser').hide();
 
 }); 
 
+function btnadd_clicked() {
+
+	switch(operation) 
+	{
+		case 1: number = first + second;
+				$('#value').html(number);
+				
 
 
 
+				first = number;
+				break;
+		case 2: number = first - second;
+				$('#value').html(number);
+				historystr = ('#value').val();
+				first = number;
+				break;
+		case 3: number = first * second;
+				$('#value').html(number);
+				historystr = ('#value').val();
+				first = number;
+				break;
+		case 4: number = first / second;
+				$('#value').html(number);
+				historystr = ('#value').val();
+				first = number;
+				break;
+
+	}
+	 
+	
+	operation = 1;
+	second_append = false;
+
+	$('#test').html("first =" + first + " <br>second= " + second + " <br>operation=" + operation + " <br>second_append=" + second_append);
+
+
+}
+
+function btnminus_clicked() {
+
+	switch(operation) 
+	{
+		case 1: number = first + second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 2: number = first - second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 3: number = first * second;
+				$('#value').html(number);
+				first = number;
+				break;
+		case 4: number = first / second;
+				$('#value').html(number);
+				first = number;
+				break;
+
+	}
+
+	operation = 2;
+	second_append = false;
+
+	$('#test').html("first =" + first + " <br>second= " + second + " <br>operation=" + operation + " <br>second_append=" + second_append);
+
+}
 
 
 function btnzero_clicked() {
@@ -89,9 +163,10 @@ function btnzero_clicked() {
 	if (operation == 0) 	
 		{ 
 			
-			first_string = $('#value').append("0");
+			$('#value').append("0");
 			
 			var output = $('#value').html();
+			first = Number(output);
 			
 		
 			
@@ -193,7 +268,7 @@ function btnone_clicked() {
 	if (operation == 0) 	
 		{ 
 			
-			first_string = $('#value').append("1");
+			$('#value').append("1");
 			
 			var output = $('#value').html();
 			
@@ -205,13 +280,13 @@ function btnone_clicked() {
 
 					if (second_append == false) {
 						document.getElementById('value').innerHTML = " ";
-						second_string = $('#value').append("1");
+						$('#value').append("1");
 						var output = $('#value').html();
 						second = Number(output);
 						second_append = true;
 					
 					} else{
-						second_string = $('#value').append("1");
+						$('#value').append("1");
 						var output = $('#value').html();
 						second = Number(output);
 						
@@ -220,6 +295,8 @@ function btnone_clicked() {
 			
 			
 		}
+
+		$('#test').html("first =" + first + " <br>second= " + second + " <br>operation=" + operation + " <br>second_append=" + second_append);
 
 
 		
@@ -232,7 +309,7 @@ function btntwo_clicked() {
 	if (operation == 0) 	
 		{ 
 			
-			first_string = $('#value').append("2");
+			$('#value').append("2");
 			var output = $('#value').html();
 			
 			first = Number(output);
@@ -242,24 +319,21 @@ function btntwo_clicked() {
 		else {
 					if (second_append == false) {
 						document.getElementById('value').innerHTML = " ";
-						second_string = $('#value').append("2");
+						$('#value').append("2");
 						var output = $('#value').html();
 						second = Number(output);
 						second_append = true;
 					
 					} else{
-						second_string = $('#value').append("2");
+						$('#value').append("2");
 						var output = $('#value').html();
 						second = Number(output);
 						
 					}
-
-					
-
-				
 	
-			
 		}
+
+		$('#test').html("first =" + first + " <br>second= " + second + " <br>operation=" + operation + " <br>second_append=" + second_append);
 }
 
 
@@ -276,13 +350,13 @@ function btnthree_clicked() {
 		} else {
 			if (second_append == false) {
 						document.getElementById('value').innerHTML = " ";
-						second_string = $('#value').append("3");
+						$('#value').append("3");
 						var output = $('#value').html();
 						second = Number(output);
 						second_append = true;
 					
 					} else{
-						second_string = $('#value').append("3");
+						$('#value').append("3");
 						var output = $('#value').html();
 						second = Number(output);
 						
@@ -331,7 +405,7 @@ function btnfive_clicked() {
 	if (operation == 0) 	
 		{ 
 			
-			first_string = $('#value').append("5");
+			$('#value').append("5");
 			var output = $('#value').html();
 			
 			first = Number(output);
@@ -340,13 +414,13 @@ function btnfive_clicked() {
 			
 			if (second_append == false) {
 						document.getElementById('value').innerHTML = " ";
-						second_string = $('#value').append("5");
+						$('#value').append("5");
 						var output = $('#value').html();
 						second = Number(output);
 						second_append = true;
 					
 					} else{
-						second_string = $('#value').append("5");
+						$('#value').append("5");
 						var output = $('#value').html();
 						second = Number(output);
 						
@@ -356,6 +430,9 @@ function btnfive_clicked() {
 			
 			
 		}
+
+
+		$('#test').html("first =" + first + " <br>second= " + second + " <br>operation=" + operation + " <br>second_append=" + second_append);
 }
 
 function btnsix_clicked() {
@@ -363,7 +440,7 @@ function btnsix_clicked() {
 	if (operation == 0) 	
 		{ 
 			
-			first_string = $('#value').append("6");
+			$('#value').append("6");
 			var output = $('#value').html();
 			
 			first = Number(output);
@@ -372,22 +449,21 @@ function btnsix_clicked() {
 			
 			if (second_append == false) {
 						document.getElementById('value').innerHTML = " ";
-						second_string = $('#value').append("6");
+						$('#value').append("6");
 						var output = $('#value').html();
 						second = Number(output);
 						second_append = true;
 					
 					} else{
-						second_string = $('#value').append("6");
+						$('#value').append("fuck");
 						var output = $('#value').html();
 						second = Number(output);
 						
 					}
-			
-
-			
-			
+	
 		}
+
+		$('#test').html("first =" + first + " <br>second= " + second + " <br>operation=" + operation + " <br>second_append=" + second_append);
 }
 
 function btnseven_clicked() {
@@ -497,46 +573,7 @@ function btnclear_clicked() {
 	second_append = false;
 }
 
-function btnadd_clicked() {
 
-	switch(operation) 
-	{
-		case 1: number = first + second;
-				$('#value').html(number);
-				
-
-
-
-				first = number;
-				break;
-		case 2: number = first - second;
-				$('#value').html(number);
-				historystr = ('#value').val();
-				first = number;
-				break;
-		case 3: number = first * second;
-				$('#value').html(number);
-				historystr = ('#value').val();
-				first = number;
-				break;
-		case 4: number = first / second;
-				$('#value').html(number);
-				historystr = ('#value').val();
-				first = number;
-				break;
-
-	}
-	 
-	
-	operation = 1;
-	second_append = false;
-
-
-
-	
-	
-
-}
 
 function btndivide_clicked() {
 
@@ -598,33 +635,7 @@ function btnmult_clicked() {
 
 
 
-function btnminus_clicked() {
 
-	switch(operation) 
-	{
-		case 1: number = first + second;
-				$('#value').html(number);
-				first = number;
-				break;
-		case 2: number = first - second;
-				$('#value').html(number);
-				first = number;
-				break;
-		case 3: number = first * second;
-				$('#value').html(number);
-				first = number;
-				break;
-		case 4: number = first / second;
-				$('#value').html(number);
-				first = number;
-				break;
-
-	}
-
-	operation = 2;
-	second_append = false;
-
-}
 
 
 function btndel_clicked() {

@@ -15,7 +15,7 @@
 	color: white; 
 	font-family: "courier new", "Lucida Console", Monospace;
 	font-size: 20px;
-	margin-left: 35%;
+	margin-left: 30%;
 
 	-webkit-animation: myfirst 5s; /*chrome safari opera*/
 	animation: myfirst 5s;
@@ -54,10 +54,42 @@
 }
 
 #blinkingCursor {
-	font-size: 30px;
+	font-size: 35px;
 	padding: 0px;
-	margin: 0px;
+	margin-top: 12%;
+
+	position: relative;
+	right: 10%;
+
+	color: white;
+
+	-webkit-animation: blinking 2s;
+	animation: blinking 2s;
+
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+
 }
+
+/*chrome safari opera*/
+@-webkit-keyframes blinking {
+	0% {color : white; }
+	25% {color: #162B40;}
+	50% {color: white;}
+	75% {color: #162B40;}
+	100% {color : white; }
+}
+
+/*chrome safari opera*/
+@keyframes blinking {
+	0% {color : white; }
+	25% {color: #162B40;}
+	50% {color: white;}
+	75% {color: #162B40;}
+	100% {color : white; }
+}
+
+
 
 .custom-table-value {
 	margin-top: 40px;
@@ -136,16 +168,35 @@
 
 
 
-.custom-footer {
-	margin-left:40%;
+#custom-footer {
+	position: relative;
+	left: 120%;
+	margin-top: 12%;
+
+	padding-left: 1%;
+	padding-top: 1%;
+	width: 41%;
+	
+
+	background-color: #000066;
+
+	border: 2px dashed green;
+}
+
+#custom-p {
 	font-family: "courier new", "Lucida Console", Monospace;
 	color: white;
+	
+
 }
 
 
 
 
-
+#test {
+	color: white;
+	margin-left: 10%;
+}
 
 
 
