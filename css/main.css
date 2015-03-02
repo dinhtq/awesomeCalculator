@@ -58,9 +58,10 @@
 	padding: 0px;
 	
 
-	position: fixed;
-	top: 14.5%;
-	left: 64.5%;
+	position: absolute;
+	top: 11%;
+	left: 93%;
+	z-index: 2;
 	
 
 
@@ -72,6 +73,13 @@
 	-webkit-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
 
+}
+
+@media screen and (max-width: 480px) {
+	#blinkingCursor {
+		top: 4%;
+
+	}
 }
 
 /*chrome safari opera*/
@@ -111,6 +119,7 @@
 	border: 1px solid white;
 	border-collapse: collapse;
 	background-color: #162B40;
+	z-index: -1;
 }
 
 
