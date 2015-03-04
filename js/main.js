@@ -455,7 +455,7 @@ function btnsix_clicked() {
 						second_append = true;
 					
 					} else{
-						$('#value').append("fuck");
+						$('#value').append("oops");
 						var output = $('#value').html();
 						second = Number(output);
 						
